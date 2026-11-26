@@ -1,0 +1,24 @@
+# Levanta únicamente la base de datos PostgreSQL necesaria para el backend.
+# El backend y el frontend se ejecutan con Node.js directamente (ver README.md
+# de cada carpeta), ya que es el flujo más simple para desarrollo/demostración.
+#
+# Uso:
+#   docker compose up -d
+#   (luego, en /backend): npm run db:migrate && npm run db:seed && npm run start:dev
+#
+version: "3.8"
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: qa_assistant
+    ports:
+      - "5432:5432"
+    volumes:
+      - qa_assistant_pgdata:/var/lib/postgresql/data
+
+volumes:
+  qa_assistant_pgdata:

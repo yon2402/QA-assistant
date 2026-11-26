@@ -1,0 +1,17 @@
+# Dependencias y compilados
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Variables de entorno (contienen secretos locales)
+.env
+
+# Documentos subidos a la aplicacion (no se publican)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Archivos locales
+*.log
+/package-lock.json
+.DS_Store
+Thumbs.db
